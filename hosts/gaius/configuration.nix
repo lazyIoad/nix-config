@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, vars, ... }:
 
 {
   imports =
@@ -60,15 +60,11 @@
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       firefox
-      git
     ];
+    shell = pkgs.fish;
   };
 
   nixpkgs.config.allowUnfree = true;
-
-  environment.systemPackages = with pkgs; [
-    vim
-  ];
 
   system.stateVersion = "23.05";
 
@@ -77,6 +73,29 @@
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
+  };
+
+  home-manager.users.${vars.user} = {
+    imports = [
+      ../../modules/git
+      ../../modules/fish
+    ];
+    
+    home = {
+      username = "lazyload";
+      homeDirectory = "/home/lazyload";
+
+      stateVersion = "23.11";
+
+      packages = with pkgs; [
+        helix
+        vim
+      ];
+    };
+
+    programs = {
+      home-manager.enable = true;
+    };
   };
 }
 

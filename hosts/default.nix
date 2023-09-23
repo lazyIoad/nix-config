@@ -2,8 +2,16 @@
 
 let
   mkNixosSystem = { user, host }:
+    let
+      vars = {
+        inherit user;
+      };
+    in
     nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
+      specialArgs = {
+        inherit vars;
+      };
       modules = [
         ./${host}/configuration.nix
         home-manager.nixosModules.home-manager {
@@ -22,4 +30,3 @@ in
     };
   };
 }
-
