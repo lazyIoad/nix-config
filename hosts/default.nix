@@ -1,23 +1,21 @@
-{ nixpkgs, home-manager, ... }:
+{ inputs, nixpkgs, home-manager, ... }:
 
 let
-  mkNixosSystem = { user, host }:
-    let
-      vars = {
-        inherit user;
-      };
-    in
+  mkNixosSystem = { host, user, system }:
     nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
+      inherit system;
       specialArgs = {
-        inherit vars;
+        inherit inputs;
+        vars = {
+          inherit user host;
+        };
       };
       modules = [
-        ./${host}/configuration.nix
+        ./${host}
+        ./configuration.nix
         home-manager.nixosModules.home-manager {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.${user} = import ./${host}/home.nix;
         }
       ];
     };
@@ -25,8 +23,9 @@ in
 {
   nixosConfigurations = {
     gaius = mkNixosSystem {
-      user = "lazyload";
       host = "gaius";
+      user = "lazyload";
+      system = "x86_64-linux";
     };
   };
 }

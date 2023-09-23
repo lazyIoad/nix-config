@@ -10,9 +10,9 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }:
+  outputs = inputs @ { self, nixpkgs, home-manager, ... }:
     import ./hosts {
-      inherit nixpkgs home-manager;
+      inherit inputs nixpkgs home-manager;
     };
 }
 

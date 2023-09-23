@@ -1,8 +1,4 @@
-{ pkgs, vars, ... }: {
-  users.users.${vars.user} = {
-    shell = pkgs.fish;
-  };
-  
+{ pkgs, ... }: {
   programs = {
     fish = {
       enable = true;
@@ -42,4 +38,3 @@
     };
   };
 }
-
