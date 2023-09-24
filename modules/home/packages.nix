@@ -8,7 +8,10 @@
       lazygit
       luajit
       ripgrep
+      # sublimetext
       tree-sitter
+      vscodium
+      # wezterm
       wget
     ];
   };

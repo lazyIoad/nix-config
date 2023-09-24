@@ -1,8 +1,11 @@
+# Core programs managed by home-manager
+
 { pkgs, vars, ... }: {
   home-manager.users.${vars.user} = {
      imports = [
       ../git
       ../fish
+      # ./modules/wezterm
     ];
 
     programs = {

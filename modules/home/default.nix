@@ -5,6 +5,10 @@
   ];
 
   home-manager.users.${vars.user} = {
+    imports = [
+      ./modules
+    ];
+
     home = {
       username = "${vars.user}";
       homeDirectory = "/home/${vars.user}";
