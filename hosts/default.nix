@@ -1,15 +1,20 @@
 { inputs, nixpkgs, home-manager, ... }:
 
 let
+  mkArgs = { host, user }: {
+    specialArgs = {
+      inherit inputs;
+      vars = {
+        inherit user host;
+      };
+    };
+  };
+
   mkNixosSystem = { host, user, system }:
     nixpkgs.lib.nixosSystem {
       inherit system;
-      specialArgs = {
-        inherit inputs;
-        vars = {
-          inherit user host;
-        };
-      };
+      inherit (mkArgs { inherit host user; }) specialArgs;
+
       modules = [
         ./${host}
         ./configuration.nix
@@ -19,8 +24,7 @@ let
         }
       ];
     };
-in
-{
+in {
   nixosConfigurations = {
     gaius = mkNixosSystem {
       host = "gaius";
