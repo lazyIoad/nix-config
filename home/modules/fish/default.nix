@@ -2,7 +2,6 @@
   programs = {
     fish = {
       enable = true;
-      # interactiveShellInit = shellInit;
       functions = {
         mkcd = {
           description = "Make a directory and enter it";
@@ -34,7 +33,7 @@
         grem = "git rebase master";
         n = "nvim";
         ws = "cd $WORKSPACE";
-      }; # // extraAbbrs;
+      };
     };
   };
 }

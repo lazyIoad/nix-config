@@ -1,6 +1,4 @@
-{ config, pkgs, vars, ... }:
-
-{
+{ config, pkgs, vars, ... }: {
   imports = [
     ./hardware-configuration.nix
   ];
@@ -32,5 +30,19 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
+  };
+
+  environment = {
+    systemPackages = with pkgs; [
+      firefox
+      ungoogled-chromium
+      git
+      vim
+    ];
+
+    variables = {
+      EDITOR = "nvim";
+      WORKSPACE = "/home/${vars.user}/workspace";
+    };
   };
 }

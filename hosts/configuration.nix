@@ -1,9 +1,22 @@
-{ pkgs, vars, ... }: {
-  imports = [
-    ../modules/nix  
-    ../modules/home
-  ];
-  
+{ pkgs, vars, inputs, ... }: {
+  nix = {
+    settings = {
+      auto-optimise-store = true;
+    };
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 2d";
+    };
+    package = pkgs.nixFlakes;
+    registry.nixpkgs.flake = inputs.nixpkgs;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+      keep-outputs          = true
+      keep-derivations      = true
+    '';
+  };
+
   users.users.${vars.user} = {
     isNormalUser = true;
     description = "${vars.user}";
@@ -12,20 +25,6 @@
   };
 
   programs.fish.enable = true;
-
-  environment = {
-    systemPackages = with pkgs; [
-      firefox
-      ungoogled-chromium
-      git
-      vim
-    ];
-
-    variables = {
-      EDITOR = "nvim";
-      WORKSPACE = "/home/${vars.user}/workspace";
-    };
-  };
 
   i18n = {
     defaultLocale = "en_US.UTF-8";

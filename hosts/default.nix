@@ -10,7 +10,7 @@ let
     };
   };
 
-  mkNixosSystem = { host, user, system }:
+  mkNixosSystem = { host, user, system, withGUI }:
     nixpkgs.lib.nixosSystem {
       inherit system;
       inherit (mkArgs { inherit host user; }) specialArgs;
@@ -21,6 +21,10 @@ let
         home-manager.nixosModules.home-manager {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
+          home-manager.users.${user} = import ../home/${user}.nix;
+          home-manager.extraSpecialArgs = {
+            inherit withGUI;
+          };
         }
       ];
     };
@@ -30,6 +34,7 @@ in {
       host = "gaius";
       user = "lazyload";
       system = "x86_64-linux";
+      withGUI = true;
     };
   };
 }

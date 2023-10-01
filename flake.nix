@@ -15,4 +15,3 @@
       inherit inputs nixpkgs home-manager;
     };
 }
-
