@@ -4,6 +4,7 @@
     ./modules/wezterm
     ./modules/git
     ./modules/fish
+    ./modules/helix
   ];
 
   home = {
