@@ -16,6 +16,8 @@
       flyctl
     ] ++ pkgs.lib.optionals specialArgs.withGUI [
       vscodium
+      _1password-gui
+      signal-desktop
     ];
   };
 }
