@@ -12,6 +12,7 @@
       };
       ignores = [
         ".DS_Store"
+        ".direnv"
       ];
       userName = "lazyload";
       userEmail = "git@lazyloading.net";

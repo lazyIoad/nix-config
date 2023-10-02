@@ -7,6 +7,7 @@
       lazygit
       luajit
       ripgrep
+      tree
       tree-sitter
       wget
     ];
