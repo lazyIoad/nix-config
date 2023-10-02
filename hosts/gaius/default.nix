@@ -41,7 +41,7 @@
     ];
 
     variables = {
-      EDITOR = "nvim";
+      EDITOR = "hx";
       WORKSPACE = "/home/${vars.user}/workspace";
     };
   };

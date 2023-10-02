@@ -20,7 +20,7 @@
         }
       ];
       shellAbbrs = {
-        e = "nvim";
+        e = "$EDITOR";
         ga = "git add";
         gb = "git branch";
         gc = "git checkout";
@@ -31,7 +31,6 @@
         gp = "git pull --rebase";
         gps = "git push";
         grem = "git rebase master";
-        n = "nvim";
         ws = "cd $WORKSPACE";
       };
     };
