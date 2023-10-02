@@ -46,4 +46,8 @@
   nixpkgs.config.allowUnfree = true;
 
   system.stateVersion = "23.11";
+
+  fonts.packages = with pkgs; [
+    (nerdfonts.override { fonts = [ "FiraCode" ]; })
+  ];
 }

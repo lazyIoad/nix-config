@@ -1,3 +1,8 @@
+References:
+- https://github.com/MatthiasBenaets/nixos-config
+- https://github.com/gvolpe/nix-config
+- https://github.com/jonringer/nixpkgs-config
+
 Frequent commands:
 
 ```

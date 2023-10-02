@@ -7,7 +7,7 @@ if wezterm.config_builder then
   config = wezterm.config_builder()
 end
 
--- config.font = wezterm.font 'FiraCode Nerd Font Mono'
+config.font = wezterm.font 'FiraCode Nerd Font Mono'
 config.font_size = 13
 config.line_height = 1.1
 
