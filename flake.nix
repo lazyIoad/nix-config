@@ -8,26 +8,15 @@
 
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";      
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
   outputs = inputs @ { self, nixpkgs, flake-utils, home-manager, ... }:
     flake-utils.lib.eachDefaultSystem
-      (system:
-        let
-          pkgs = import nixpkgs {
-            inherit system;
-          };
-        in
-        with pkgs; {
-          devShells.default = mkShell {
-            buildInputs = [
-              nixfmt
-            ];
-          };
-        }
-    ) //
+      (system: {
+        formatter = nixpkgs.legacyPackages.${system}.nixpkgs-fmt;
+      }) //
     import ./hosts {
       inherit inputs nixpkgs home-manager;
     };
