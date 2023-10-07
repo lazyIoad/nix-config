@@ -11,40 +11,7 @@ config.font = wezterm.font 'FiraCode Nerd Font Mono'
 config.font_size = 13
 config.line_height = 1.1
 
-config.colors = {
-  foreground = '#FFFFFF',
-  background = '#000000',
-  selection_fg = '#FFFFFF',
-  selection_bg = '#777777',
-  cursor_fg = '#000000',
-  cursor_bg = '#FFFFFF',
-
-  ansi = {
-    '#000000',
-    '#EE0100',
-    '#78C1B4',
-    '#FFB545',
-    '#9494F3',
-    '#DAB5F9',
-    '#72DEC2',
-    '#DDDDDD',
-  },
-
-  brights = {
-    '#777777',
-    '#EE0100',
-    '#78C1B4',
-    '#FFB545',
-    '#9494F3',
-    '#DAB5F9',
-    '#72DEC2',
-    '#FFFFFF',
-  },
-
-  tab_bar = {
-    background = '#000000',
-  },
-}
+config.color_scheme = 'Gruvbox dark, hard (base16)'
 
 config.use_fancy_tab_bar = false
 config.window_decorations = 'RESIZE'
