@@ -5,6 +5,7 @@
     ./modules/git
     ./modules/fish
     ./modules/helix
+    ./modules/sway
   ];
 
   home = {
@@ -17,6 +18,7 @@
     ] ++ pkgs.lib.optionals specialArgs.withGUI [
       vscodium
       signal-desktop
+      xfce.thunar
     ];
   };
 }

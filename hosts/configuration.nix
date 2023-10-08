@@ -24,6 +24,8 @@
     shell = pkgs.fish;
   };
 
+  programs.fish.enable = true;
+
   i18n = {
     defaultLocale = "en_US.UTF-8";
     extraLocaleSettings = {
@@ -44,20 +46,4 @@
   nixpkgs.config.allowUnfree = true;
 
   system.stateVersion = "23.11";
-
-  fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "FiraCode" ]; })
-  ];
-
-  security.polkit.enable = true;
-
-  programs = {
-    fish.enable = true;
-
-    _1password.enable = true;
-    _1password-gui = {
-      enable = true;
-      polkitPolicyOwners = [ "${vars.user}" ];
-    };
-  };
 }
