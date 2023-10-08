@@ -1,4 +1,4 @@
-theme = 'rabbits'
+theme = 'gruvbox_dark_hard'
 
 [editor]
 rulers = [80]
