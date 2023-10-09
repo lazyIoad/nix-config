@@ -35,6 +35,16 @@ in
         border = 0;
         hideEdgeBorders = "both";
       };
+      input = {
+        "type:touchpad" = {
+          tap = "enabled";
+          natural_scroll = "enabled";
+        };
+      };
+      gaps = {
+        inner = 8;
+        outer = 8;
+      };
     };
     extraConfig = ''
       output "*" bg ${self}/res/concrete.jpg fill

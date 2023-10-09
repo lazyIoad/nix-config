@@ -6,6 +6,7 @@
       helix
       lazygit
       luajit
+      neofetch
       ripgrep
       tree
       tree-sitter
