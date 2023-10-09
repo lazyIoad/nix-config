@@ -24,6 +24,14 @@
       };
     };
 
+    btop = {
+      enable = true;
+      settings = {
+        color_theme = "gruvbox_dark";
+        proc_gradient = false;
+      };
+    };
+
     direnv = {
       enable = true;
       nix-direnv.enable = true;

@@ -15,7 +15,9 @@
 
     packages = with pkgs; [
       flyctl
+      powertop
     ] ++ pkgs.lib.optionals specialArgs.withGUI [
+      pavucontrol
       vscodium
       signal-desktop
       xfce.thunar
