@@ -18,6 +18,6 @@
         formatter = nixpkgs.legacyPackages.${system}.nixpkgs-fmt;
       }) //
     import ./hosts {
-      inherit inputs nixpkgs home-manager;
+      inherit inputs nixpkgs home-manager self;
     };
 }

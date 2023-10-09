@@ -1,4 +1,4 @@
-{ pkgs, specialArgs, lib, ... }:
+{ pkgs, specialArgs, lib, self, ... }:
 
 let
   configure-gtk = pkgs.writeTextFile {
@@ -37,6 +37,7 @@ in
       };
     };
     extraConfig = ''
+      output "*" bg ${self}/res/concrete.jpg fill
       exec "${pkgs.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1"
       exec configure-gtk
       default_border none
@@ -49,6 +50,7 @@ in
     glib
     gruvbox-gtk-theme
     polkit-kde-agent
+    swaybg
     swaylock
     swayidle
     wl-clipboard

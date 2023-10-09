@@ -1,4 +1,4 @@
-{ inputs, nixpkgs, home-manager, ... }:
+{ inputs, nixpkgs, home-manager, self, ... }:
 
 let
   mkArgs = { host, user }: {
@@ -24,7 +24,7 @@ let
           home-manager.useUserPackages = true;
           home-manager.users.${user} = import ../home/${user}.nix;
           home-manager.extraSpecialArgs = {
-            inherit withGUI;
+            inherit withGUI self;
           };
         }
       ];
