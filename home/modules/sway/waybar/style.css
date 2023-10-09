@@ -1,0 +1,36 @@
+* {
+  border: none;
+  border-radius: 0;
+  font-family: "FiraCode Nerd Font", sans-serif;
+  font-size: 15px;
+  min-height: 24px;
+}
+
+window#waybar {
+  background: #1d2021;
+  color: #ddc7a1;
+}
+
+tooltip {
+  background: #282828;
+  border: 1px solid #d4be98;
+}
+
+tooltip label {
+  color: #ddc7a1;
+}
+
+.modules-right * {
+  margin: 0 16px;
+}
+
+#workspaces button {
+  padding: 0 5px;
+  background: transparent;
+  color: #ddc7a1;
+}
+
+#workspaces button.focused {
+  background: #ddc7a1;
+  color: #1d2021;
+}

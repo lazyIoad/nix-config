@@ -20,6 +20,9 @@ let
   };
 in
 {
+  xdg.configFile."waybar" = {
+    source = ./waybar;
+  };
   wayland.windowManager.sway = lib.mkIf specialArgs.withGUI {
     enable = true;
     config = {
@@ -27,8 +30,6 @@ in
       terminal = "wezterm";
       menu = "wofi --show run";
       bars = [{
-        fonts.size = 15.0;
-        position = "bottom";
         command = "waybar";
       }];
       window = {
