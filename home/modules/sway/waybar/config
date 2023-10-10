@@ -26,7 +26,7 @@
     "tooltip-format-disconnected": "Disconnected"
   },
   "pulseaudio": {
-    "format": "{volume}% {icon}",
+    "format": "{icon} {volume}%",
     "format-bluetooth": "󰂯",
     "format-muted": "󰝟",
     "format-icons": {
@@ -37,13 +37,13 @@
     "scroll-step": 5
   },
   "battery": {
-    "format": "{capacity}% {icon}",
+    "format": "{icon}  {capacity}%",
     "format-icons": ["", "", "", "", ""],
     "bat": "BAT0",
     "tooltip-format": "(Internal) {timeTo}"
   },
   "battery#bat1": {
-    "format": "{capacity}% {icon}",
+    "format": "{icon}  {capacity}%",
     "format-icons": ["", "", "", "", ""],
     "bat": "BAT1",
     "tooltip-format": "(Hotswap) {timeTo}"
