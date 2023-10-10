@@ -53,7 +53,10 @@ in
       exec configure-gtk
       default_border none
     '';
-    wrapperFeatures.gtk = true;
+    wrapperFeatures = {
+      base = true;
+      gtk = true;
+    };
   };
 
   home.packages = with pkgs; [
@@ -68,5 +71,6 @@ in
     mako
     wofi
     waybar
+    xdg-utils
   ];
 }
