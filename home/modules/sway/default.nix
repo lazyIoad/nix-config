@@ -28,7 +28,7 @@ in
     config = {
       modifier = "Mod4";
       terminal = "wezterm";
-      menu = "wofi --show run";
+      menu = "fuzzel";
       bars = [{
         command = "waybar";
       }];
@@ -69,8 +69,30 @@ in
     swayidle
     wl-clipboard
     mako
-    wofi
     waybar
     xdg-utils
   ];
+
+  programs.fuzzel = {
+    enable = true;
+    settings = {
+      main = {
+        terminal = "wezterm";
+        layer = "overlay";
+        font = "FiraCode Nerd Font Mono:size=8";
+      };
+      colors = {
+        background = "282828ff";
+        text = "ddc7a1ff";
+        match = "ea6962ff";
+        selection = "ddc7a1ff";
+        selection-text = "282828ff";
+        selection-match = "ea6962ff";
+      };
+      border = {
+        width = 0;
+        radius = 0;
+      };
+    };
+  };
 }
