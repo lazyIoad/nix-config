@@ -1,4 +1,4 @@
-{ config, pkgs, vars, ... }: {
+{ config, pkgs, vars, ... }: rec {
   imports = [
     ./hardware-configuration.nix
     ../modules/media.nix
@@ -28,6 +28,7 @@
       firefox
       ungoogled-chromium
       git
+      unzip
       vim
       xdg-utils
     ];
@@ -38,4 +39,6 @@
       MOZ_DBUS_REMOTE = "1"; # https://github.com/swaywm/sway/wiki#i-cant-open-links-in-external-applications-in-firefox
     };
   };
+
+  services.tailscale.enable = true;
 }
