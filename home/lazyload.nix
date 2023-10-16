@@ -5,6 +5,7 @@
     ./modules/git
     ./modules/fish
     ./modules/helix
+    ./modules/neovim
     ./modules/sway
   ];
 

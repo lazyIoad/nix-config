@@ -1,4 +1,4 @@
-{ inputs, nixpkgs, home-manager, self, ... }:
+{ inputs, nixpkgs, home-manager, vim-extra-plugins, self, ... }:
 
 let
   mkArgs = { host, user }: {
@@ -20,6 +20,7 @@ let
         ./configuration.nix
         home-manager.nixosModules.home-manager
         {
+          nixpkgs.overlays = [ vim-extra-plugins.overlays.default ];
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users.${user} = import ../home/${user}.nix;

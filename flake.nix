@@ -10,14 +10,24 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    vim-extra-plugins = {
+      url = github:jooooscha/nixpkgs-vim-extra-plugins;
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs @ { self, nixpkgs, flake-utils, home-manager, ... }:
+  outputs = inputs @ { self, nixpkgs, flake-utils, home-manager, vim-extra-plugins,... }:
     flake-utils.lib.eachDefaultSystem
-      (system: {
-        formatter = nixpkgs.legacyPackages.${system}.nixpkgs-fmt;
+      (system: let
+        pkgs = nixpkgs.legacyPackages.${system};
+      in {
+        formatter = pkgs.nixpkgs-fmt;
+        devShells.default = pkgs.mkShell {
+          buildInputs = with pkgs; [ stylua ];
+        };
       }) //
     import ./hosts {
-      inherit inputs nixpkgs home-manager self;
+      inherit inputs nixpkgs home-manager vim-extra-plugins self;
     };
 }
