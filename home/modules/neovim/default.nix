@@ -27,7 +27,6 @@ in {
       indent-blankline-nvim
       nvim-web-devicons
 
-
       # TODO
       # telescope-nvim
       # oil-nvim
