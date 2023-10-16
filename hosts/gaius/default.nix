@@ -5,6 +5,7 @@
     ../modules/fonts.nix
     ../modules/1password.nix
     ../modules/sway.nix
+    ../modules/power.nix
   ];
 
   boot.loader = {
