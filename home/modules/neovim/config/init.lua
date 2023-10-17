@@ -2,6 +2,11 @@
 vim.loader.enable()
 require("config.options")
 require("config.core")
-require("plugins.which-key")
+do
+  local module_1_auto = require("which-key")
+  module_1_auto.setup()
+end
+require("plugins.nvim-treesitter")
+require("plugins.indent-blankline")
 require("plugins.gitsigns")
 return require("plugins.telescope")
