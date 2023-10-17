@@ -1,4 +1,5 @@
 (set vim.g.mapleader " ")
+(set vim.g.maplocalleader " ")
 
 (local opt vim.opt)
 (set opt.background :dark)

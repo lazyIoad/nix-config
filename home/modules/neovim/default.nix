@@ -20,6 +20,8 @@ in {
       nvim-treesitter-textobjects
       plenary-nvim
       which-key-nvim
+      telescope-nvim
+      telescope-fzf-native-nvim
 
       # UI
       gitsigns-nvim
@@ -28,7 +30,6 @@ in {
       nvim-web-devicons
 
       # TODO
-      # telescope-nvim
       # oil-nvim
     ] ++ extraPlugins;
   };
