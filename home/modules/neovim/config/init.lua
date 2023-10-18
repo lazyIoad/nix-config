@@ -6,6 +6,10 @@ do
   local module_1_auto = require("which-key")
   module_1_auto.setup()
 end
+do
+  local module_1_auto = require("nvim-web-devicons")
+  module_1_auto.setup()
+end
 require("plugins.nvim-treesitter")
 require("plugins.indent-blankline")
 require("plugins.gitsigns")

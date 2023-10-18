@@ -24,3 +24,7 @@ sudo nix store gc
 ```
 sudo nix-store --optimise
 ```
+
+
+To look into:
+- https://github.com/nvim-telescope/telescope.nvim/wiki/Extensions

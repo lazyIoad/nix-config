@@ -7,6 +7,7 @@
 ;; Call setup on plugins that don't need any options
 (import-macros {: setup} :macros)
 (setup :which-key)
+(setup :nvim-web-devicons)
 
 ;; Pull in other plugins
 (require :plugins.nvim-treesitter)
