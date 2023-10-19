@@ -14,3 +14,4 @@
 (require :plugins.indent-blankline)
 (require :plugins.gitsigns)
 (require :plugins.telescope)
+(require :plugins.lsp)

@@ -13,4 +13,5 @@ end
 require("plugins.nvim-treesitter")
 require("plugins.indent-blankline")
 require("plugins.gitsigns")
-return require("plugins.telescope")
+require("plugins.telescope")
+return require("plugins.lsp")
