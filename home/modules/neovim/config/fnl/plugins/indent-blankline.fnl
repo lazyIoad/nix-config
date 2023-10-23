@@ -1,3 +1,3 @@
-(let [ibl (require :ibl)]
-  (ibl.setup {
-    :scope  { :show_start false :show_end false }}))
+{1 :lukas-reineke/indent-blankline.nvim
+ :main :ibl
+ :opts {:scope {:show_start false :show_end false}}}
