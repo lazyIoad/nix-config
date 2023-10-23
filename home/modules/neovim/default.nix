@@ -1,10 +1,6 @@
 { config, pkgs, ... }: 
 
-let
-  extraPlugins = with pkgs.vimExtraPlugins; [
-    nfnl
-  ];
-in {
+{
   # home.packages = with pkgs; [
   #   (neovim.override {
   #     configure.packages.myVimPackage = with pkgs.vimPlugins; {
@@ -39,7 +35,7 @@ in {
 
   #     # TODO
   #     # oil-nvim
-    ] ++ extraPlugins;
+    ];
   };
 
   # xdg.configFile."nvim".source = ./config;
