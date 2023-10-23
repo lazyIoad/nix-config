@@ -1,17 +1,9 @@
-{ config, pkgs, ... }: 
+{ config, lib, ... }:
 
 {
-  # home.packages = with pkgs; [
-  #   (neovim.override {
-  #     configure.packages.myVimPackage = with pkgs.vimPlugins; {
-  #       opt = [ nvim-treesitter.withAllGrammars ] ++ extraPlugins;
-  #     };
-  #   })
-  # ];
-
   programs.neovim = {
     enable = true;
-    plugins = with pkgs.vimPlugins; [
+#    plugins = with pkgs.vimPlugins; [
   #     # LSP
   #     cmp-nvim-lsp
   #     lsp-zero-nvim
@@ -20,7 +12,7 @@
   #     nvim-lspconfig
 
   #     # Util
-      nvim-treesitter.withAllGrammars
+   #   nvim-treesitter.withAllGrammars
   #     nvim-treesitter-textobjects
   #     plenary-nvim
   #     which-key-nvim
@@ -35,10 +27,11 @@
 
   #     # TODO
   #     # oil-nvim
-    ];
+#    ];
   };
 
-  # xdg.configFile."nvim".source = ./config;
-  xdg.configFile."nvim".source = config.lib.file.mkOutOfStoreSymlink
-    "${config.home.homeDirectory}/workspace/dots/home/modules/neovim/config";
+  xdg.configFile = {
+    "nvim".source = config.lib.file.mkOutOfStoreSymlink
+      "${config.home.homeDirectory}/workspace/dots/home/modules/neovim/config";
+  };
 }
