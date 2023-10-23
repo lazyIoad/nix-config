@@ -1,3 +1,5 @@
-(import-macros {: setup} :macros)
+;; (import-macros {: setup} :macros)
 
-(setup :gitsigns)
+;; (setup :gitsigns)
+
+{1 :lewis6991/gitsigns.nvim :lazy true}

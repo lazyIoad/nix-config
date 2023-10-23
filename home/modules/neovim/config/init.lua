@@ -1,17 +1,3 @@
--- [nfnl] Compiled from init.fnl by https://github.com/Olical/nfnl, do not edit.
-vim.loader.enable()
+-- [nfnl] Compiled from fnl/init.fnl by https://github.com/Olical/nfnl, do not edit.
 require("config.options")
-require("config.core")
-do
-  local module_1_auto = require("which-key")
-  module_1_auto.setup()
-end
-do
-  local module_1_auto = require("nvim-web-devicons")
-  module_1_auto.setup()
-end
-require("plugins.nvim-treesitter")
-require("plugins.indent-blankline")
-require("plugins.gitsigns")
-require("plugins.telescope")
-return require("plugins.lsp")
+return require("config.lazy")
