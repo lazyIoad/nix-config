@@ -12,21 +12,7 @@
   #     nvim-lspconfig
 
   #     # Util
-   #   nvim-treesitter.withAllGrammars
   #     nvim-treesitter-textobjects
-  #     plenary-nvim
-  #     which-key-nvim
-  #     telescope-nvim
-  #     telescope-fzf-native-nvim
-
-  #     # UI
-  #     gitsigns-nvim
-  #     gruvbox-material
-  #     indent-blankline-nvim
-  #     nvim-web-devicons
-
-  #     # TODO
-  #     # oil-nvim
 #    ];
   };
 

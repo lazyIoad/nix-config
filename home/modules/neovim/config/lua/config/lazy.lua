@@ -7,4 +7,4 @@ end
 do end (vim.opt.rtp):prepend(lazypath)
 local lazy = require("lazy")
 local disabled_plugins = {"gzip", "netrwPlugin", "tarPlugin", "tohtml", "tutor", "zipPlugin"}
-return lazy.setup({performance = {rtp = {disabled_plugins = disabled_plugins}, reset_packpath = false}, spec = {{import = "plugins"}}})
+return lazy.setup({performance = {rtp = {disabled_plugins = disabled_plugins}}, spec = {{import = "plugins"}}})

@@ -15,6 +15,5 @@
 
 (lazy.setup
   {:performance
-    {:reset_packpath false
-     :rtp {:disabled_plugins disabled_plugins}}
+    {:rtp {:disabled_plugins disabled_plugins}}
      :spec [{:import :plugins}]})
