@@ -16,16 +16,20 @@
    :event :InsertEnter
    :dependencies [{1 :L3MON4D3/LuaSnip :build "make install_jsregexp"}]
    :config (fn []
-             (local lsp_zero (require :lsp-zero))
-             (lsp_zero.extend_cmp))}
+            (local lsp-zero (require :lsp-zero))
+            (lsp-zero.extend_cmp)
+            (local cmp (require :cmp))
+            (cmp.setup {:completion {:autocomplete false}})
+            )}
   {1 :neovim/nvim-lspconfig
    :cmd :LspInfo
    :event [:BufReadPre :BufNewFile]
    :dependencies [:hrsh7th/cmp-nvim-lsp]
    :config (fn []
-             (local lsp_zero (require :lsp-zero))
-             (lsp_zero.extend_lspconfig)
-             (lsp_zero.on_attach (fn [_ bufnr]
-                                   (lsp_zero.default_keymaps {:buffer bufnr})))
-             (lsp_zero.setup_servers available-servers))}
+             (local lsp-zero (require :lsp-zero))
+             (lsp-zero.extend_lspconfig)
+             (lsp-zero.on_attach (fn [_ bufnr]
+                (lsp-zero.extend_lspconfig)
+                (lsp-zero.default_keymaps {:buffer bufnr :preserve_mappings false})))
+             (lsp-zero.setup_servers available-servers))}
 ]

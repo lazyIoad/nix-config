@@ -26,13 +26,16 @@ local function _3_()
 end
 local function _4_()
   local lsp_zero = require("lsp-zero")
-  return lsp_zero.extend_cmp()
+  lsp_zero.extend_cmp()
+  local cmp = require("cmp")
+  return cmp.setup({completion = {autocomplete = false}})
 end
 local function _5_()
   local lsp_zero = require("lsp-zero")
   lsp_zero.extend_lspconfig()
   local function _6_(_, bufnr)
-    return lsp_zero.default_keymaps({buffer = bufnr})
+    lsp_zero.extend_lspconfig()
+    return lsp_zero.default_keymaps({buffer = bufnr, preserve_mappings = false})
   end
   lsp_zero.on_attach(_6_)
   return lsp_zero.setup_servers(available_servers)
