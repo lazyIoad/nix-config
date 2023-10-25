@@ -19,7 +19,7 @@
       in {
         formatter = pkgs.nixpkgs-fmt;
         devShells.default = pkgs.mkShell {
-          buildInputs = with pkgs; [ stylua ];
+          buildInputs = with pkgs; [ fnlfmt ];
         };
       }) //
     import ./hosts {

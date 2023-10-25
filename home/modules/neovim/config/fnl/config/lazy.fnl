@@ -11,9 +11,12 @@
 (vim.opt.rtp:prepend lazypath)
 
 (local lazy (require :lazy))
-(local disabled_plugins [:gzip :netrwPlugin :tarPlugin :tohtml :tutor :zipPlugin])
+(local disabled_plugins [:gzip
+                         :netrwPlugin
+                         :tarPlugin
+                         :tohtml
+                         :tutor
+                         :zipPlugin])
 
-(lazy.setup
-  {:performance
-    {:rtp {:disabled_plugins disabled_plugins}}
-     :spec [{:import :plugins}]})
+(lazy.setup {:performance {:rtp {: disabled_plugins}}
+             :spec [{:import :plugins}]})

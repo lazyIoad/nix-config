@@ -1,3 +1,1 @@
-{1 :lewis6991/gitsigns.nvim
- :event :VeryLazy
- :config true}
+{1 :lewis6991/gitsigns.nvim :event :VeryLazy :config true}
