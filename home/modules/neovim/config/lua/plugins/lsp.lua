@@ -1,13 +1,13 @@
 -- [nfnl] Compiled from fnl/plugins/lsp.fnl by https://github.com/Olical/nfnl, do not edit.
-local lsp_servers = {"gopls", "rust_analyzer"}
+local lsp_servers = {gopls = "gopls"}
 local available_servers
 do
   local tbl_17_auto = {}
   local i_18_auto = #tbl_17_auto
-  for _, s in ipairs(lsp_servers) do
+  for exec, lsp in pairs(lsp_servers) do
     local val_19_auto
-    if (vim.fn.executable(s) == 1) then
-      val_19_auto = s
+    if (vim.fn.executable(exec) == 1) then
+      val_19_auto = lsp
     else
       val_19_auto = nil
     end

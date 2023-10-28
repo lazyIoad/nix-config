@@ -1,10 +1,10 @@
-(local lsp-servers [:gopls :rust_analyzer])
+(local lsp-servers {:gopls :gopls})
 
 ;; Since some of my LSPs are only available in the dev shell, filter
 ;; for those that are in PATH and set those up.
 (local available-servers
-       (icollect [_ s (ipairs lsp-servers)]
-         (if (= (vim.fn.executable s) 1) s)))
+       (icollect [exec lsp (pairs lsp-servers)]
+         (if (= (vim.fn.executable exec) 1) lsp)))
 
 [{1 :VonHeikemen/lsp-zero.nvim
   :branch :v3.x
