@@ -31,6 +31,7 @@
         gp = "git pull --rebase";
         gps = "git push";
         grem = "git rebase master";
+        gs = "git status";
         ws = "cd $WORKSPACE";
       };
     };
