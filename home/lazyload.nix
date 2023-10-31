@@ -22,6 +22,7 @@
       vscodium
       signal-desktop
       xfce.thunar
+      thunderbird
     ];
   };
 }
