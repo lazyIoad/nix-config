@@ -31,21 +31,27 @@
             (local lsp-zero (require :lsp-zero))
             (lsp-zero.extend_lspconfig)
             (lsp-zero.on_attach (fn [_ bufnr]
-                                  (keybind :n :K vim.lsp.buf.hover
+                                  (local ts (require :telescope.builtin))
+                                  (keybind :n :<leader>lk vim.lsp.buf.hover
                                            "Display symbol hover information")
-                                  (keybind :n :gd vim.lsp.buf.definition
+                                  (keybind :n :<leader>ld
+                                           (. ts :lsp_definitions)
                                            "Jump to symbol definition")
-                                  (keybind :n :gD vim.lsp.buf.declaration
+                                  (keybind :n :<leader>lD
+                                           vim.lsp.buf.declaration
                                            "Jump to symbol declaration")
-                                  (keybind :n :gi vim.lsp.buf.implementation
+                                  (keybind :n :<leader>li
+                                           (. ts :lsp_implementations)
                                            "List symbol implementations")
-                                  (keybind :n :go vim.lsp.buf.type_definition
+                                  (keybind :n :<leader>lt
+                                           (. ts :lsp_type_definitions)
                                            "Jump to symbol type definition")
-                                  (keybind :n :gr vim.lsp.buf.references
+                                  (keybind :n :<leader>lr
+                                           (. ts :lsp_references)
                                            "List symbol references")
                                   (keybind :i :<C-s> vim.lsp.buf.signature_help
                                            "Display symbol signature info")
-                                  (keybind :n :<leader>lrn vim.lsp.buf.rename
+                                  (keybind :n :<leader>ln vim.lsp.buf.rename
                                            "Rename symbol")
                                   (keybind :n :<leader>lf
                                            (fn []
@@ -62,8 +68,7 @@
                                                vim.lsp.buf.range_code_action
                                                vim.lsp.buf.code_action)
                                            "Display code actions")
-                                  (keybind :n :<leader>ld
-                                           vim.diagnostic.open_float
+                                  (keybind :n :<leader>lh (. ts :diagnostics)
                                            "Display diagnostics")
                                   (keybind :n "[d" vim.diagnostic.goto_prev
                                            "Previous diagnostic")

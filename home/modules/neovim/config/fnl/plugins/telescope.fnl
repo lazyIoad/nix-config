@@ -6,6 +6,7 @@
 
 {1 :nvim-telescope/telescope.nvim
  :dependencies [{1 :nvim-telescope/telescope-fzf-native.nvim :build :make}]
+ :event :VeryLazy
  :config (fn []
            (let [telescope (require :telescope)]
              ((. telescope :setup))

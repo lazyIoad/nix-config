@@ -13,4 +13,4 @@ end
 local function _4_()
   return (require("telescope.builtin")).buffers()
 end
-return {"nvim-telescope/telescope.nvim", dependencies = {{"nvim-telescope/telescope-fzf-native.nvim", build = "make"}}, config = _1_, keys = {{"<leader>ff", _2_, desc = "Find file"}, {"<leader>fg", _3_, desc = "Search in files"}, {"<leader>fb", _4_, desc = "Find buffer"}}}
+return {"nvim-telescope/telescope.nvim", dependencies = {{"nvim-telescope/telescope-fzf-native.nvim", build = "make"}}, event = "VeryLazy", config = _1_, keys = {{"<leader>ff", _2_, desc = "Find file"}, {"<leader>fg", _3_, desc = "Search in files"}, {"<leader>fb", _4_, desc = "Find buffer"}}}
