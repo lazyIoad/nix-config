@@ -35,7 +35,7 @@
     ];
 
     variables = {
-      EDITOR = "hx";
+      EDITOR = "nvim";
       WORKSPACE = "/home/${vars.user}/workspace";
       MOZ_DBUS_REMOTE = "1"; # https://github.com/swaywm/sway/wiki#i-cant-open-links-in-external-applications-in-firefox
     };

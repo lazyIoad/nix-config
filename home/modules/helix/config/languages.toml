@@ -1,4 +1,2 @@
 [[language]]
 name = "rust"
-[language.config.files]
-excludeDirs = [".direnv"]
