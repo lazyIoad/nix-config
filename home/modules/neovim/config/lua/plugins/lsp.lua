@@ -35,6 +35,7 @@ local function _5_()
   lsp_zero.extend_lspconfig()
   local function _6_(_, bufnr)
     local ts = require("telescope.builtin")
+    local rt = require("rust-tools")
     local function _7_()
       return vim.lsp.buf.hover()
     end
@@ -82,31 +83,39 @@ local function _5_()
     end
     vim.keymap.set("x", "<leader>lf", _17_, {buffer = bufnr, desc = "Format selection"})
     local function _19_()
-      return vim.lsp.buf.format()
+      local _20_
+      if (vim.bo.filetype == rust) then
+        _20_ = rt.hover_actions.hover_actions
+      else
+        _20_ = vim.lsp.buf.code_action
+      end
+      return _20_()
     end
     vim.keymap.set("n", "<leader>lc", _19_, {buffer = bufnr, desc = "Display code actions"})
-    local function _20_()
-      local _21_
-      if vim.lsp.buf.range_code_action then
-        _21_ = vim.lsp.buf.range_code_action
+    local function _22_()
+      local _23_
+      if (vim.bo.filetype == rust) then
+        _23_ = rt.hover_range.hover_range
+      elseif vim.lsp.buf.range_code_action then
+        _23_ = vim.lsp.buf.range_code_action
       else
-        _21_ = vim.lsp.buf.code_action
+        _23_ = vim.lsp.buf.code_action
       end
-      return _21_()
+      return _23_()
     end
-    vim.keymap.set("x", "<leader>lc", _20_, {buffer = bufnr, desc = "Display code actions"})
-    local function _23_()
+    vim.keymap.set("x", "<leader>lc", _22_, {buffer = bufnr, desc = "Display code actions"})
+    local function _25_()
       return ts.diagnostics()
     end
-    vim.keymap.set("n", "<leader>lh", _23_, {buffer = bufnr, desc = "Display diagnostics"})
-    local function _24_()
+    vim.keymap.set("n", "<leader>lh", _25_, {buffer = bufnr, desc = "Display diagnostics"})
+    local function _26_()
       return vim.diagnostic.goto_prev()
     end
-    vim.keymap.set("n", "[d", _24_, {buffer = bufnr, desc = "Previous diagnostic"})
-    local function _25_()
+    vim.keymap.set("n", "[d", _26_, {buffer = bufnr, desc = "Previous diagnostic"})
+    local function _27_()
       return vim.diagnostic.goto_next()
     end
-    return vim.keymap.set("n", "]d", _25_, {buffer = bufnr, desc = "Next diagnostic"})
+    return vim.keymap.set("n", "]d", _27_, {buffer = bufnr, desc = "Next diagnostic"})
   end
   lsp_zero.on_attach(_6_)
   return lsp_zero.setup_servers(available_servers)

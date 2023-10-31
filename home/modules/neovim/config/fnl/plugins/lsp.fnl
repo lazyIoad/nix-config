@@ -32,6 +32,7 @@
             (lsp-zero.extend_lspconfig)
             (lsp-zero.on_attach (fn [_ bufnr]
                                   (local ts (require :telescope.builtin))
+                                  (local rt (require :rust-tools))
                                   (keybind :n :<leader>lk vim.lsp.buf.hover
                                            "Display symbol hover information")
                                   (keybind :n :<leader>ld
@@ -61,10 +62,15 @@
                                            (fn []
                                              (vim.lsp.buf.format {:async true}))
                                            "Format selection")
-                                  (keybind :n :<leader>lc vim.lsp.buf.format
+                                  (keybind :n :<leader>lc
+                                           (if (= vim.bo.filetype rust)
+                                               rt.hover_actions.hover_actions
+                                               vim.lsp.buf.code_action)
                                            "Display code actions")
                                   (keybind :x :<leader>lc
-                                           (if vim.lsp.buf.range_code_action
+                                           (if (= vim.bo.filetype rust)
+                                               rt.hover_range.hover_range
+                                               vim.lsp.buf.range_code_action
                                                vim.lsp.buf.range_code_action
                                                vim.lsp.buf.code_action)
                                            "Display code actions")

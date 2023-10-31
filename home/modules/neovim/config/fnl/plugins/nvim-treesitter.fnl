@@ -3,7 +3,7 @@
   :main :nvim-treesitter.configs
   :dependencies [{1 :JoosepAlviste/nvim-ts-context-commentstring
                   :main :ts_context_commentstring
-                  :opts true}]
+                  :config true}]
   :opts {:ensure_installed :all
          :auto_install true
          :highlight {:enable true}
