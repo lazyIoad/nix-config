@@ -1,20 +1,7 @@
 { config, lib, ... }:
 
 {
-  programs.neovim = {
-    enable = true;
-#    plugins = with pkgs.vimPlugins; [
-  #     # LSP
-  #     cmp-nvim-lsp
-  #     lsp-zero-nvim
-  #     luasnip
-  #     nvim-cmp
-  #     nvim-lspconfig
-
-  #     # Util
-  #     nvim-treesitter-textobjects
-#    ];
-  };
+  programs.neovim.enable = true;
 
   xdg.configFile = {
     "nvim".source = config.lib.file.mkOutOfStoreSymlink

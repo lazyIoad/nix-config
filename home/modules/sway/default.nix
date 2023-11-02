@@ -46,6 +46,13 @@ in
         inner = 8;
         outer = 8;
       };
+      keybindings = lib.mkOptionDefault {
+        "XF86MonBrightnessDown" = "exec light -U 10";
+        "XF86MonBrightnessUp" = "exec light -A 10";
+        "XF86AudioRaiseVolume" = "exec 'pactl set-sink-volume @DEFAULT_SINK@ +1%'";
+        "XF86AudioLowerVolume" = "exec 'pactl set-sink-volume @DEFAULT_SINK@ -1%'";
+        "XF86AudioMute" = "exec 'pactl set-sink-mute @DEFAULT_SINK@ toggle'";
+      };
     };
     extraConfig = ''
       output "*" bg ${self}/res/concrete.jpg fill
@@ -63,13 +70,14 @@ in
     configure-gtk
     glib
     gruvbox-gtk-theme
+    mako
     polkit-kde-agent
     swaybg
-    swaylock
     swayidle
-    wl-clipboard
-    mako
+    swaylock
     waybar
+    wev
+    wl-clipboard
     xdg-utils
   ];
 

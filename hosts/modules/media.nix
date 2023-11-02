@@ -9,4 +9,8 @@
     };
     pulse.enable = true;
   };
+
+  environment.systemPackages = with pkgs; [
+    pulseaudio # for pactl
+  ];
 }

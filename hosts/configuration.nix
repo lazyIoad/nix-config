@@ -18,7 +18,7 @@
   users.users.${vars.user} = {
     isNormalUser = true;
     description = "${vars.user}";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "video" ];
     shell = pkgs.fish;
   };
 

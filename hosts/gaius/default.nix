@@ -41,5 +41,7 @@
     };
   };
 
+  programs.light.enable = true;
   services.tailscale.enable = true;
+  services.dbus.enable = true;
 }

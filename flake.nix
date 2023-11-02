@@ -14,14 +14,16 @@
 
   outputs = inputs @ { self, nixpkgs, flake-utils, home-manager }:
     flake-utils.lib.eachDefaultSystem
-      (system: let
-        pkgs = nixpkgs.legacyPackages.${system};
-      in {
-        formatter = pkgs.nixpkgs-fmt;
-        devShells.default = pkgs.mkShell {
-          buildInputs = with pkgs; [ fnlfmt ];
-        };
-      }) //
+      (system:
+        let
+          pkgs = nixpkgs.legacyPackages.${system};
+        in
+        {
+          formatter = pkgs.nixpkgs-fmt;
+          devShells.default = pkgs.mkShell {
+            buildInputs = with pkgs; [ fnlfmt ];
+          };
+        }) //
     import ./hosts {
       inherit inputs nixpkgs home-manager self;
     };
