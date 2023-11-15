@@ -1,4 +1,4 @@
-{ inputs, nixpkgs, home-manager, self, ... }:
+{ inputs, nixpkgs, darwin, home-manager, self, ... }:
 
 let
   mkArgs = { host, user }: {
@@ -18,6 +18,7 @@ let
       modules = [
         ./${host}
         ./configuration.nix
+        ./linux-configuration.nix # couldn't figure out how to use mkIf :(
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
@@ -25,6 +26,28 @@ let
           home-manager.users.${user} = import ../home/${user}.nix;
           home-manager.extraSpecialArgs = {
             inherit withGUI self;
+          };
+        }
+      ];
+    };
+
+  mkDarwinSystem = { host, user, system }:
+    darwin.lib.darwinSystem {
+      inherit system;
+      inherit (mkArgs { inherit host user; }) specialArgs;
+
+      modules = [
+        ./${host}
+        ./configuration.nix
+        ./darwin-configuration.nix
+        home-manager.darwinModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.${user} = import ../home/${user}.nix;
+          home-manager.extraSpecialArgs = {
+            inherit self;
+            withGUI = false;
           };
         }
       ];

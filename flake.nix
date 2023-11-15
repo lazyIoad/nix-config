@@ -4,6 +4,11 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
+    darwin = {
+      url = "github:lnl7/nix-darwin/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     flake-utils.url = "github:numtide/flake-utils";
 
     home-manager = {
@@ -12,7 +17,7 @@
     };
   };
 
-  outputs = inputs @ { self, nixpkgs, flake-utils, home-manager }:
+  outputs = inputs @ { self, nixpkgs, darwin, flake-utils, home-manager }:
     flake-utils.lib.eachDefaultSystem
       (system:
         let
@@ -25,6 +30,6 @@
           };
         }) //
     import ./hosts {
-      inherit inputs nixpkgs home-manager self;
+      inherit inputs nixpkgs darwin home-manager self;
     };
 }
