@@ -17,10 +17,15 @@
   security = {
     polkit.enable = true;
 
-    pam.services.swaylock = {
-      text = "auth include login";
+    pam.services = {
+      greetd.enableGnomeKeyring = true;
+      swaylock = {
+        text = "auth include login";
+      };
     };
   };
+
+  services.gnome.gnome-keyring.enable = true;
 
   xdg.portal = {
     enable = true;

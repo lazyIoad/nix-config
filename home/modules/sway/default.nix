@@ -56,8 +56,8 @@ in
     };
     extraConfig = ''
       output "*" bg ${self}/res/concrete.jpg fill
-      exec "${pkgs.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1"
       exec configure-gtk
+      exec "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
       default_border none
     '';
     wrapperFeatures = {
@@ -71,7 +71,7 @@ in
     glib
     gruvbox-gtk-theme
     mako
-    polkit-kde-agent
+    polkit_gnome
     swaybg
     swayidle
     swaylock
