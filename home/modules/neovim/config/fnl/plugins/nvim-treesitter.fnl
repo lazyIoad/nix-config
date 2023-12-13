@@ -7,8 +7,7 @@
   :opts {:ensure_installed :all
          :auto_install true
          :highlight {:enable true}
-         :indent {:enable true}
-         :context_commentstring {:enable true :enable_autocmd false}}}
+         :indent {:enable true}}}
  {1 :numToStr/Comment.nvim
   :event [:BufReadPost :BufNewFile]
   :main :Comment
