@@ -32,6 +32,7 @@
             (lsp-zero.extend_lspconfig)
             (lsp-zero.on_attach (fn [_ bufnr]
                                   (local ts (require :telescope.builtin))
+                                  (local trouble (require :trouble))
                                   (local rt (require :rust-tools))
                                   (keybind :n :<leader>lk
                                            (if (= vim.bo.filetype :rust)
@@ -56,7 +57,8 @@
                                            (. ts :lsp_type_definitions)
                                            "Jump to symbol type definition")
                                   (keybind :n :<leader>lr
-                                           (. ts :lsp_references)
+                                           (fn []
+                                             (trouble.toggle :lsp_references))
                                            "List symbol references")
                                   (keybind :i :<C-s> vim.lsp.buf.signature_help
                                            "Display symbol signature info")

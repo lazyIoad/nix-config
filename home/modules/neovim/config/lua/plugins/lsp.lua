@@ -35,6 +35,7 @@ local function _5_()
   lsp_zero.extend_lspconfig()
   local function _6_(_, bufnr)
     local ts = require("telescope.builtin")
+    local trouble = require("trouble")
     local rt = require("rust-tools")
     local function _7_()
       local _8_
@@ -73,57 +74,60 @@ local function _5_()
     end
     vim.keymap.set("n", "<leader>lt", _16_, {buffer = bufnr, desc = "Jump to symbol type definition"})
     local function _17_()
-      return ts.lsp_references()
+      local function _18_()
+        return trouble.toggle("lsp_references")
+      end
+      return _18_()
     end
     vim.keymap.set("n", "<leader>lr", _17_, {buffer = bufnr, desc = "List symbol references"})
-    local function _18_()
+    local function _19_()
       return vim.lsp.buf.signature_help()
     end
-    vim.keymap.set("i", "<C-s>", _18_, {buffer = bufnr, desc = "Display symbol signature info"})
-    local function _19_()
+    vim.keymap.set("i", "<C-s>", _19_, {buffer = bufnr, desc = "Display symbol signature info"})
+    local function _20_()
       return vim.lsp.buf.rename()
     end
-    vim.keymap.set("n", "<leader>ln", _19_, {buffer = bufnr, desc = "Rename symbol"})
-    local function _20_()
-      local function _21_()
+    vim.keymap.set("n", "<leader>ln", _20_, {buffer = bufnr, desc = "Rename symbol"})
+    local function _21_()
+      local function _22_()
         return vim.lsp.buf.format({async = true})
       end
-      return _21_()
+      return _22_()
     end
-    vim.keymap.set("n", "<leader>lf", _20_, {buffer = bufnr, desc = "Format buffer"})
-    local function _22_()
-      local function _23_()
+    vim.keymap.set("n", "<leader>lf", _21_, {buffer = bufnr, desc = "Format buffer"})
+    local function _23_()
+      local function _24_()
         return vim.lsp.buf.format({async = true})
       end
-      return _23_()
+      return _24_()
     end
-    vim.keymap.set("x", "<leader>lf", _22_, {buffer = bufnr, desc = "Format selection"})
-    local function _24_()
+    vim.keymap.set("x", "<leader>lf", _23_, {buffer = bufnr, desc = "Format selection"})
+    local function _25_()
       return vim.lsp.buf.code_action()
     end
-    vim.keymap.set("n", "<leader>lc", _24_, {buffer = bufnr, desc = "Display code actions"})
-    local function _25_()
-      local _26_
+    vim.keymap.set("n", "<leader>lc", _25_, {buffer = bufnr, desc = "Display code actions"})
+    local function _26_()
+      local _27_
       if vim.lsp.buf.range_code_action then
-        _26_ = vim.lsp.buf.range_code_action
+        _27_ = vim.lsp.buf.range_code_action
       else
-        _26_ = vim.lsp.buf.code_action
+        _27_ = vim.lsp.buf.code_action
       end
-      return _26_()
+      return _27_()
     end
-    vim.keymap.set("x", "<leader>lc", _25_, {buffer = bufnr, desc = "Display code actions"})
-    local function _28_()
+    vim.keymap.set("x", "<leader>lc", _26_, {buffer = bufnr, desc = "Display code actions"})
+    local function _29_()
       return ts.diagnostics()
     end
-    vim.keymap.set("n", "<leader>lh", _28_, {buffer = bufnr, desc = "Display diagnostics"})
-    local function _29_()
+    vim.keymap.set("n", "<leader>lh", _29_, {buffer = bufnr, desc = "Display diagnostics"})
+    local function _30_()
       return vim.diagnostic.goto_prev()
     end
-    vim.keymap.set("n", "[d", _29_, {buffer = bufnr, desc = "Previous diagnostic"})
-    local function _30_()
+    vim.keymap.set("n", "[d", _30_, {buffer = bufnr, desc = "Previous diagnostic"})
+    local function _31_()
       return vim.diagnostic.goto_next()
     end
-    return vim.keymap.set("n", "]d", _30_, {buffer = bufnr, desc = "Next diagnostic"})
+    return vim.keymap.set("n", "]d", _31_, {buffer = bufnr, desc = "Next diagnostic"})
   end
   lsp_zero.on_attach(_6_)
   return lsp_zero.setup_servers(available_servers)
