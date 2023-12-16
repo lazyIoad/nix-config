@@ -16,10 +16,13 @@
 
   users.users.${vars.user} = {
     description = "${vars.user}";
-    shell = pkgs.fish;
+    shell = vars.shell;
   };
 
-  programs.fish.enable = true;
+  programs = {
+    fish.enable = true;
+    zsh.enable = true;
+  };
 
   time.timeZone = "America/New_York";
 

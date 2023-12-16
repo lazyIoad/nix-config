@@ -1,19 +1,19 @@
 { inputs, nixpkgs, darwin, home-manager, self, ... }:
 
 let
-  mkArgs = { host, user }: {
+  mkArgs = { host, shell, user }: {
     specialArgs = {
       inherit inputs;
       vars = {
-        inherit user host;
+        inherit host shell user;
       };
     };
   };
 
-  mkNixosSystem = { host, user, system, withGUI }:
+  mkNixosSystem = { host, shell, user, system, withGUI }:
     nixpkgs.lib.nixosSystem {
       inherit system;
-      inherit (mkArgs { inherit host user; }) specialArgs;
+      inherit (mkArgs { inherit host shell user; }) specialArgs;
 
       modules = [
         ./${host}
@@ -31,10 +31,10 @@ let
       ];
     };
 
-  mkDarwinSystem = { host, user, system }:
+  mkDarwinSystem = { host, shell, user, system }:
     darwin.lib.darwinSystem {
       inherit system;
-      inherit (mkArgs { inherit host user; }) specialArgs;
+      inherit (mkArgs { inherit host shell user; }) specialArgs;
 
       modules = [
         ./${host}
@@ -55,8 +55,9 @@ let
 in
 {
   nixosConfigurations = {
-    gaius = mkNixosSystem {
+    gaius = mkNixosSystem rec {
       host = "gaius";
+      shell = nixpkgs.legacyPackages.${system}.fish;
       user = "lazyload";
       system = "x86_64-linux";
       withGUI = true;
