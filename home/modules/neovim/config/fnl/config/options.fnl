@@ -10,6 +10,7 @@
 (set opt.expandtab true)
 (set opt.formatoptions :jcroqlnt)
 (set opt.grepprg "rg --vimgrep")
+(set opt.ignorecase true)
 (set opt.list true)
 (set opt.mouse :a)
 (set opt.number true)
