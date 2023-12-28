@@ -7,6 +7,7 @@
     ./modules/helix
     ./modules/neovim
     ./modules/sway
+    ./modules/vscode
   ];
 
   home = {
@@ -19,7 +20,6 @@
       powertop
     ] ++ pkgs.lib.optionals specialArgs.withGUI [
       pavucontrol
-      vscodium
       signal-desktop
       xfce.thunar
       thunderbird
