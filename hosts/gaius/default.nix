@@ -9,9 +9,13 @@
   ];
 
   boot.loader = {
-    systemd-boot = {
+    grub = {
       enable = true;
+      device = "nodev";
+      useOSProber = true;
+      efiSupport = true;
       configurationLimit = 5;
+      default = "saved";
     };
     efi.canTouchEfiVariables = true;
   };
