@@ -1,6 +1,6 @@
 Hosts:
-`gaius`: NixOS running on a Thinkpad T480
-`valus`: NixOS running on an Oracle Cloud VM (4 CPU/12GB RAM), set up w/ [nixos-infect](https://github.com/elitak/nixos-infect/tree/master)
+- `gaius`: NixOS running on a Thinkpad T480
+- `valus`: NixOS running on an Oracle Cloud VM (4 CPU/12GB RAM), set up w/ [nixos-infect](https://github.com/elitak/nixos-infect/tree/master)
 
 References:
 - https://github.com/MatthiasBenaets/nixos-config
