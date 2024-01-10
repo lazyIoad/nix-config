@@ -2,7 +2,9 @@
  {1 :nvim-lua/plenary.nvim :lazy true}
  {1 :RRethy/vim-illuminate :event :VeryLazy}
  {1 :akinsho/bufferline.nvim :config true}
- {1 :folke/zen-mode.nvim :cmd :ZenMode}
+ {1 :folke/zen-mode.nvim
+  :cmd :ZenMode
+  :opts {:window {:backdrop 1} :plugins {:options {:laststatus 3}}}}
  {1 :folke/trouble.nvim
   :event :VeryLazy
   :keys [{1 :<leader>t
