@@ -6,13 +6,18 @@
   boot = {
     tmp.cleanOnBoot = true;
 
-    loader.grub = {
-      efiSupport = true;
-      efiInstallAsRemovable = true;
-      device = "nodev";
+    loader = {
+      efi = {
+        efiSysMountPoint = "/boot/efi";
+      };
+
+      grub = {
+        efiSupport = true;
+        efiInstallAsRemovable = true;
+        device = "nodev";
+      };
     };
   };
-
 
   i18n = {
     defaultLocale = "en_US.UTF-8";
