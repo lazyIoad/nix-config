@@ -62,5 +62,13 @@ in
       system = "x86_64-linux";
       withGUI = true;
     };
+
+    valus = mkNixosSystem rec {
+      host = "valus";
+      shell = nixpkgs.legacyPackages.${system}.fish;
+      user = "lazyload";
+      system = "aarch64-linux";
+      withGUI = false;
+    };
   };
 }
