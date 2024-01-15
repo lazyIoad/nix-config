@@ -4,9 +4,7 @@ let
   mkArgs = { host, shell, user }: {
     specialArgs = {
       inherit inputs;
-      vars = {
-        inherit host shell user;
-      };
+      vars = { inherit host shell user; };
     };
   };
 
@@ -24,9 +22,7 @@ let
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users.${user} = import ../home/${user}.nix;
-          home-manager.extraSpecialArgs = {
-            inherit withGUI self;
-          };
+          home-manager.extraSpecialArgs = { inherit withGUI self; };
         }
       ];
     };
@@ -36,10 +32,7 @@ let
       inherit system;
       specialArgs = { inherit inputs; };
 
-      modules = [
-        ./${host}
-        ./server-configuration.nix
-      ];
+      modules = [ ./${host} ./server-configuration.nix ];
     };
 
   mkDarwinSystem = { host, shell, user, system }:
@@ -63,8 +56,7 @@ let
         }
       ];
     };
-in
-{
+in {
   nixosConfigurations = {
     gaius = mkNixosSystem rec {
       host = "gaius";

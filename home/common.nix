@@ -1,14 +1,6 @@
 { pkgs, vars, ... }: {
   home = {
-    packages = with pkgs; [
-      cachix
-      fd
-      lazygit
-      neofetch
-      ripgrep
-      tree
-      wget
-    ];
+    packages = with pkgs; [ cachix fd lazygit neofetch ripgrep tree wget ];
   };
 
   programs = {
@@ -16,9 +8,7 @@
 
     bat = {
       enable = true;
-      config = {
-        theme = "gruvbox-dark";
-      };
+      config = { theme = "gruvbox-dark"; };
     };
 
     btop = {

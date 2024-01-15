@@ -5,33 +5,26 @@ let
     name = "configure-gtk";
     destination = "/bin/configure-gtk";
     executable = true;
-    text =
-      let
-        schema = pkgs.gsettings-desktop-schemas;
-        datadir = "${schema}/share/gsettings-schemas/${schema.name}";
-      in
-      ''
-        export XDG_DATA_DIR=${datadir}:$XDG_DATA_DIRS
-        gnome_schema=org.gnome.desktop.interface
-        gsettings set $gnome_schema gtk-theme 'Gruvbox-Dark-BL'
-        gsettings set $gnome_schema icon-theme 'Gruvbox-Dark'
-        gsettings set $gnome_schema color-scheme 1
-      '';
+    text = let
+      schema = pkgs.gsettings-desktop-schemas;
+      datadir = "${schema}/share/gsettings-schemas/${schema.name}";
+    in ''
+      export XDG_DATA_DIR=${datadir}:$XDG_DATA_DIRS
+      gnome_schema=org.gnome.desktop.interface
+      gsettings set $gnome_schema gtk-theme 'Gruvbox-Dark-BL'
+      gsettings set $gnome_schema icon-theme 'Gruvbox-Dark'
+      gsettings set $gnome_schema color-scheme 1
+    '';
   };
-in
-{
-  xdg.configFile."waybar" = {
-    source = ./waybar;
-  };
+in {
+  xdg.configFile."waybar" = { source = ./waybar; };
   wayland.windowManager.sway = lib.mkIf specialArgs.withGUI {
     enable = true;
     config = {
       modifier = "Mod4";
       terminal = "wezterm";
       menu = "fuzzel";
-      bars = [{
-        command = "waybar";
-      }];
+      bars = [{ command = "waybar"; }];
       window = {
         border = 0;
         hideEdgeBorders = "both";
@@ -49,8 +42,10 @@ in
       keybindings = lib.mkOptionDefault {
         "XF86MonBrightnessDown" = "exec light -U 10";
         "XF86MonBrightnessUp" = "exec light -A 10";
-        "XF86AudioRaiseVolume" = "exec 'pactl set-sink-volume @DEFAULT_SINK@ +1%'";
-        "XF86AudioLowerVolume" = "exec 'pactl set-sink-volume @DEFAULT_SINK@ -1%'";
+        "XF86AudioRaiseVolume" =
+          "exec 'pactl set-sink-volume @DEFAULT_SINK@ +1%'";
+        "XF86AudioLowerVolume" =
+          "exec 'pactl set-sink-volume @DEFAULT_SINK@ -1%'";
         "XF86AudioMute" = "exec 'pactl set-sink-mute @DEFAULT_SINK@ toggle'";
       };
     };

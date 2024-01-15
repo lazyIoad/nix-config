@@ -17,7 +17,8 @@
 
   services.blueman.enable = true;
 
-  environment.systemPackages = with pkgs; [
-    pulseaudio # for pactl
-  ];
+  environment.systemPackages = with pkgs;
+    [
+      pulseaudio # for pactl
+    ];
 }

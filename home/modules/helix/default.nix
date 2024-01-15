@@ -1,9 +1,5 @@
 { pkgs, specialArgs, ... }: {
-  home.packages = with pkgs; [
-    helix
-  ];
+  home.packages = with pkgs; [ helix ];
 
-  xdg.configFile."helix" = {
-    source = ./config;
-  };
+  xdg.configFile."helix" = { source = ./config; };
 }

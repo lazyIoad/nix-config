@@ -9,7 +9,8 @@
         # Supposedly I shouldn't need to use dbus-run-session below since it should
         # be taken care of by the sway wrapper. But xdg-open doesn't seem to work
         # without it so...........
-        command = ''${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd "dbus-run-session sway" --user-menu --asterisks --remember-session'';
+        command = ''
+          ${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd "dbus-run-session sway" --user-menu --asterisks --remember-session'';
       };
     };
   };
@@ -19,9 +20,7 @@
 
     pam.services = {
       greetd.enableGnomeKeyring = true;
-      swaylock = {
-        text = "auth include login";
-      };
+      swaylock = { text = "auth include login"; };
     };
   };
 
@@ -33,15 +32,7 @@
     enable = true;
     wlr.enable = true;
     xdgOpenUsePortal = true;
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-gtk
-    ];
-    config = {
-      common = {
-        default = [
-          "gtk"
-        ];
-      };
-    };
+    extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
+    config = { common = { default = [ "gtk" ]; }; };
   };
 }

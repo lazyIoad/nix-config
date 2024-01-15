@@ -1,15 +1,11 @@
 { config, pkgs, vars, ... }: rec {
-  imports = [
-    ./hardware-configuration.nix
-  ];
+  imports = [ ./hardware-configuration.nix ];
 
   boot = {
     tmp.cleanOnBoot = true;
 
     loader = {
-      efi = {
-        efiSysMountPoint = "/boot/efi";
-      };
+      efi = { efiSysMountPoint = "/boot/efi"; };
 
       grub = {
         efiSupport = true;
@@ -50,5 +46,7 @@
     };
   };
 
-  users.users.serveruser.openssh.authorizedKeys.keys = [ ''ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHpmLmbTkIoekLsp+H47NHrBIuUIe6wyfTn1ce/CDNx7'' ];
+  users.users.serveruser.openssh.authorizedKeys.keys = [
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHpmLmbTkIoekLsp+H47NHrBIuUIe6wyfTn1ce/CDNx7"
+  ];
 }
