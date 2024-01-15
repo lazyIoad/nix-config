@@ -15,10 +15,14 @@
     '';
   };
 
+  environment.systemPackages = with pkgs; [ vim bash ];
+
   users.users.serveruser = {
     description = "serveruser";
     shell = pkgs.bash;
     isNormalUser = true;
+    packages = with pkgs; [ git ];
+    extraGroups = [ "wheel" ];
   };
 
   time.timeZone = "America/New_York";
