@@ -34,8 +34,10 @@
 
   networking = {
     hostName = "valus";
-    domain = "";
+    firewall.enable = true;
   };
+
+  security.sudo.execWheelOnly = true;
 
   services.openssh = {
     enable = true;
@@ -43,6 +45,11 @@
       PasswordAuthentication = false;
       KbdInteractiveAuthentication = false;
       PermitRootLogin = "no";
+      AllowTcpForwarding = true;
+      X11Forwarding = false;
+      AllowAgentForwarding = false;
+      AllowStreamLocalForwarding = false;
+      AuthenticationMethods = "publickey";
     };
   };
 

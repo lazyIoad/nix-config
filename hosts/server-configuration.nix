@@ -1,6 +1,9 @@
-{ pkgs, inputs, ... }: {
+{ pkgs, lib, inputs, ... }: {
   nix = {
-    settings.auto-optimise-store = true;
+    settings = {
+      auto-optimise-store = true;
+      allowed-users = [ "root" ];
+    };
     gc = {
       automatic = true;
       options = "--delete-older-than 30d";
@@ -15,7 +18,10 @@
     '';
   };
 
-  environment.systemPackages = with pkgs; [ vim bash ];
+  environment = {
+    defaultPackages = lib.mkForce [ ];
+    systemPackages = with pkgs; [ vim bash ];
+  };
 
   users.users.serveruser = {
     description = "serveruser";
