@@ -31,6 +31,17 @@ let
       ];
     };
 
+  mkNixosServerSystem = { host, system }:
+    nixpkgs.lib.nixosSystem {
+      inherit system;
+      specialArgs = { inherit inputs; };
+
+      modules = [
+        ./${host}
+        ./server-configuration.nix
+      ];
+    };
+
   mkDarwinSystem = { host, shell, user, system }:
     darwin.lib.darwinSystem {
       inherit system;
@@ -63,12 +74,9 @@ in
       withGUI = true;
     };
 
-    valus = mkNixosSystem rec {
+    valus = mkNixosServerSystem rec {
       host = "valus";
-      shell = nixpkgs.legacyPackages.${system}.fish;
-      user = "lazyload";
       system = "aarch64-linux";
-      withGUI = false;
     };
   };
 }
