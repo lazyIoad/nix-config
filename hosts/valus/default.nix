@@ -76,6 +76,7 @@
         server = {
           DOMAIN = "git.lazyloading.cloud";
           OFFLINE_MODE = true;
+          ROOT_URL = "https://git.lazyloading.cloud/";
         };
 
         service = { DISABLE_REGISTRATION = true; };
