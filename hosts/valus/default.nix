@@ -41,7 +41,6 @@
 
   services.openssh = {
     enable = true;
-    ports = [ 2222 ];
     settings = {
       PasswordAuthentication = false;
       KbdInteractiveAuthentication = false;
@@ -86,5 +85,5 @@
     };
   };
 
-  networking.firewall.allowedTCPPorts = [ 22 80 443 2222 3000 ];
+  networking.firewall.allowedTCPPorts = [ 22 80 443 ];
 }
