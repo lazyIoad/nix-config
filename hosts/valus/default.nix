@@ -41,6 +41,7 @@
 
   services.openssh = {
     enable = true;
+    ports = [ 2222 ];
     settings = {
       PasswordAuthentication = false;
       KbdInteractiveAuthentication = false;
@@ -57,13 +58,33 @@
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHpmLmbTkIoekLsp+H47NHrBIuUIe6wyfTn1ce/CDNx7"
   ];
 
-  services.caddy = {
-    enable = true;
-    virtualHosts."headscale.lazyloading.cloud".extraConfig = ''
-      respond "Hello, world!"
-    '';
-    email = "homelab@lazyloading.net";
+  services = {
+    caddy = {
+      enable = true;
+      virtualHosts."git.lazyloading.cloud".extraConfig = ''
+        reverse_proxy localhost:3000
+      '';
+      email = "homelab@lazyloading.net";
+    };
+
+    forgejo = {
+      enable = true;
+      settings = {
+        DEFAULT = { APP_NAME = "lazyforge"; };
+
+        repository = { DEFAULT_BRANCH = "master"; };
+
+        server = {
+          DOMAIN = "git.lazyloading.cloud";
+          OFFLINE_MODE = true;
+        };
+
+        service = { DISABLE_REGISTRATION = true; };
+
+        database = { DB_TYPE = "sqlite3"; };
+      };
+    };
   };
 
-  networking.firewall.allowedTCPPorts = [ 80 443 ];
+  networking.firewall.allowedTCPPorts = [ 22 80 443 2222 3000 ];
 }
