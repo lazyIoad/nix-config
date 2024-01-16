@@ -27,7 +27,7 @@
     description = "serveruser";
     shell = pkgs.bash;
     isNormalUser = true;
-    packages = with pkgs; [ git ];
+    packages = with pkgs; [ git rsync ];
     extraGroups = [ "wheel" ];
   };
 

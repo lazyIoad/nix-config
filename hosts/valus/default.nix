@@ -56,4 +56,14 @@
   users.users.serveruser.openssh.authorizedKeys.keys = [
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHpmLmbTkIoekLsp+H47NHrBIuUIe6wyfTn1ce/CDNx7"
   ];
+
+  services.caddy = {
+    enable = true;
+    virtualHosts."headscale.lazyloading.cloud".extraConfig = ''
+      respond "Hello, world!"
+    '';
+    email = "homelab@lazyloading.net";
+  };
+
+  networking.firewall.allowedTCPPorts = [ 80 443 ];
 }
