@@ -60,9 +60,17 @@
   services = {
     caddy = {
       enable = true;
-      virtualHosts."git.lazyloading.cloud".extraConfig = ''
-        reverse_proxy localhost:3000
-      '';
+      virtualHosts = {
+        "git.lazyloading.cloud".extraConfig = ''
+          reverse_proxy localhost:3000
+        '';
+
+        "fedi.lazier.computer".extraConfig = ''
+          encode gzip
+          reverse_proxy unix//run/akkoma/socket
+        '';
+      };
+
       email = "homelab@lazyloading.net";
     };
 
@@ -82,6 +90,28 @@
         service = { DISABLE_REGISTRATION = true; };
 
         database = { DB_TYPE = "sqlite3"; };
+      };
+    };
+
+    postgresql.enable = true;
+
+    akkoma = {
+      enable = true;
+      config = {
+        ":pleroma" = {
+          ":instance" = {
+            name = "lazier.computer";
+            email = "lazieradmin@lazyloading.net";
+            description = "a quiet place for lazyload";
+            registrations_open = false;
+            federating = true;
+            public = true;
+          };
+
+          "Pleroma.Web.Endpoint" = {
+            url.host = "fedi.lazier.computer";
+          };
+        };
       };
     };
   };
