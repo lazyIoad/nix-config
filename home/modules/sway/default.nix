@@ -50,7 +50,7 @@ in {
       };
     };
     extraConfig = ''
-      output "*" bg ${self}/res/concrete.jpg fill
+      output "*" bg ${self}/res/img/concrete.jpg fill
       exec configure-gtk
       exec "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
       default_border none
