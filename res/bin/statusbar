@@ -1,0 +1,21 @@
+#!/bin/sh
+
+while true
+do
+    mute_s=$(pactl get-sink-mute @DEFAULT_SINK@ | cut -d " " -f 2)
+    mute=0; [ "${mute_s}" = "yes" ] && mute=1
+    vol=$(pactl get-sink-volume @DEFAULT_SINK@ | awk 'NR==1{print substr($5, 1, length($5)-1)}')
+    if [ $mute = 1 ]; then
+        vol="(${vol})"
+    fi
+
+    battery=$(cat /sys/class/power_supply/BAT0/capacity)
+
+    if [ -d /sys/class/power_supply/BAT1 ]; then
+        battery="$battery $(cat /sys/class/power_supply/BAT1/capacity)"
+    fi
+
+    time=$(date +"%m-%d-%y %I:%M:%S %p")
+    printf "%s\n" "vol ${vol} | bat ${battery} | ${time}"
+    sleep 1
+done

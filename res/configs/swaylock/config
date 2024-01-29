@@ -1,0 +1,23 @@
+color=ffffff
+disable-caps-lock-text
+
+font=IBM Plex Mono
+font-size=20
+
+indicator-idle-visible
+indicator-radius=80
+
+bs-hl-color=ffb545
+
+inside-color=ffffff
+inside-clear-color=ffffff
+inside-caps-lock-color=ffffff
+inside-ver-color=ffffff
+inside-wrong-color=ffffff
+
+key-hl-color=72dec2
+
+ring-color=000000
+ring-clear-color=ffb545
+ring-ver-color=72dec2
+ring-wrong-color=ffb545

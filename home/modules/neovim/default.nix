@@ -5,6 +5,6 @@
 
   xdg.configFile = {
     "nvim".source = config.lib.file.mkOutOfStoreSymlink
-      "${config.home.homeDirectory}/workspace/dots/home/modules/neovim/config";
+      "${config.home.homeDirectory}/workspace/dots/res/configs/nvim";
   };
 }
