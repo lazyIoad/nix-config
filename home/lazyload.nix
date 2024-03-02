@@ -1,4 +1,9 @@
-{ pkgs, specialArgs, ... }: {
+{ pkgs, lib, specialArgs, ... }:
+let
+  inherit (pkgs) stdenv;
+  inherit (lib) optionals;
+in
+{
   imports = [
     ./common.nix
     ./modules/wezterm
@@ -6,8 +11,9 @@
     ./modules/fish
     ./modules/helix
     ./modules/neovim
-    ./modules/sway
+  ] ++ optionals specialArgs.withGUI [
     ./modules/vscode
+    ./modules/sway
   ];
 
   home = {
@@ -17,11 +23,15 @@
     stateVersion = "23.11";
 
     packages = with pkgs;
-      [ flyctl powertop ] ++ pkgs.lib.optionals specialArgs.withGUI [
+      [
+        flyctl
+      ] ++ optionals specialArgs.withGUI [
         pavucontrol
         signal-desktop
         xfce.thunar
         thunderbird
+      ] ++ optionals stdenv.isLinux [
+        powertop
       ];
   };
 }

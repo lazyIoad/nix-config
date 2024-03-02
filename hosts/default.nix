@@ -56,7 +56,8 @@ let
         }
       ];
     };
-in {
+in
+{
   nixosConfigurations = {
     gaius = mkNixosSystem rec {
       host = "gaius";
@@ -69,6 +70,15 @@ in {
     valus = mkNixosServerSystem rec {
       host = "valus";
       system = "aarch64-linux";
+    };
+  };
+
+  darwinConfigurations = {
+    phaedra = mkDarwinSystem rec {
+      host = "phaedra";
+      shell = nixpkgs.legacyPackages.${system}.fish;
+      user = "lazyload";
+      system = "x86_64-darwin";
     };
   };
 }

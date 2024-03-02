@@ -1,5 +1,15 @@
 local wezterm = require 'wezterm'
 local act = wezterm.action
+local rose_pine = {
+  dark = {
+    colors = require('lua/rose-pine').colors() ,
+    window_frame = require('lua/rose-pine').window_frame() 
+  },
+  light = {
+    colors = require('lua/rose-pine-dawn').colors() ,
+    window_frame = require('lua/rose-pine-dawn').window_frame() 
+  }
+}
 
 local config = {}
 
@@ -11,16 +21,19 @@ config.font = wezterm.font 'IBM Plex Mono'
 config.font_size = 13
 config.line_height = 1
 
-function scheme_for_appearance(appearance)
+function color_data(appearance)
   if appearance:find "Dark" then
-    return "Catppuccin Mocha"
+    return rose_pine.dark
   else
-    return "Catppuccin Latte"
+    return rose_pine.light
   end
 end
 
-config.color_scheme = scheme_for_appearance(wezterm.gui.get_appearance())
-config.enable_tab_bar = false
+local color_scheme = color_data(wezterm.gui.get_appearance())
+config.colors = color_scheme.colors
+config.window_frame = color_scheme.window_frame
+config.enable_tab_bar = true
+config.use_fancy_tab_bar = true
 config.window_decorations = 'RESIZE'
 
 config.keys = {
