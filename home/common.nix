@@ -1,6 +1,15 @@
 { pkgs, vars, ... }: {
   home = {
-    packages = with pkgs; [ cachix fd lazygit neofetch ripgrep tree wget ];
+    packages = with pkgs; [
+      cachix
+      fd
+      lazygit
+      neofetch
+      ripgrep
+      tree
+      tree-sitter
+      wget
+    ];
   };
 
   programs = {
