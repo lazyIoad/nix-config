@@ -24,6 +24,6 @@
         in {
           formatter = pkgs.nixpkgs-fmt;
           devShells.default =
-            pkgs.mkShell { buildInputs = with pkgs; [ fnlfmt ]; };
+            pkgs.mkShell { buildInputs = with pkgs; [ nixpkgs-fmt stylua ]; };
         }) // import ./hosts { inherit inputs nixpkgs darwin home-manager self; };
 }
