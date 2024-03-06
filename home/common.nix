@@ -1,4 +1,4 @@
-{ pkgs, vars, ... }: {
+{ inputs, pkgs, vars, system, ... }: {
   home = {
     packages = with pkgs; [
       cachix
@@ -9,6 +9,8 @@
       tree
       tree-sitter
       wget
+    ] ++ [
+      inputs.agenix.packages.${system}.default
     ];
   };
 

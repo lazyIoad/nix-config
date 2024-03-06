@@ -22,7 +22,7 @@ let
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users.${user} = import ../home/${user}.nix;
-          home-manager.extraSpecialArgs = { inherit withGUI self; };
+          home-manager.extraSpecialArgs = { inherit inputs system withGUI self; };
         }
       ];
     };
@@ -50,7 +50,7 @@ let
           home-manager.useUserPackages = true;
           home-manager.users.${user} = import ../home/${user}.nix;
           home-manager.extraSpecialArgs = {
-            inherit self;
+            inherit self inputs system;
             withGUI = false;
           };
         }
