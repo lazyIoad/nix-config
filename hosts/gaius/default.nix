@@ -12,7 +12,7 @@
     grub = {
       enable = true;
       device = "nodev";
-      # useOSProber = true; # uncomment as needed
+      useOSProber = true; # uncomment as needed
       efiSupport = true;
       configurationLimit = 5;
       default = "saved";
