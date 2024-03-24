@@ -22,7 +22,7 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, agenix, darwin, flake-utils, home-manager }:
+  outputs = inputs@{ nixpkgs, flake-utils, ... }:
     flake-utils.lib.eachDefaultSystem
       (system:
         let pkgs = nixpkgs.legacyPackages.${system};
@@ -30,5 +30,5 @@
           formatter = pkgs.nixpkgs-fmt;
           devShells.default =
             pkgs.mkShell { buildInputs = with pkgs; [ nixpkgs-fmt stylua ]; };
-        }) // import ./hosts { inherit inputs nixpkgs agenix darwin home-manager self; };
+        }) // import ./hosts inputs;
 }

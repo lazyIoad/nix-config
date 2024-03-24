@@ -1,4 +1,9 @@
-{ inputs, nixpkgs, darwin, home-manager, self, ... }:
+{ self
+, nixpkgs
+, darwin
+, home-manager
+, ...
+} @ inputs:
 
 let
   mkArgs = { host, shell, user }: {
