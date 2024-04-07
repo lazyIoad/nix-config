@@ -34,4 +34,7 @@ in
         powertop
       ];
   };
+
+  programs.neovim.enable = true;
+  programs.fish.enable = true;
 }

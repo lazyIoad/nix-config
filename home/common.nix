@@ -24,13 +24,11 @@
 
     fzf = {
       enable = true;
-      enableFishIntegration = true;
       enableZshIntegration = true;
     };
 
     zoxide = {
       enable = true;
-      enableFishIntegration = true;
       enableZshIntegration = true;
     };
   };
