@@ -24,7 +24,6 @@ in
 
     packages = with pkgs;
       [
-        flyctl
         tailscale
       ] ++ optionals specialArgs.withGUI [
         pavucontrol

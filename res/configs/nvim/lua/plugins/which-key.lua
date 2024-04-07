@@ -11,7 +11,9 @@ return {
 		wk.register({
 			f = { name = "+fzf" },
 			l = { name = "+lsp" },
-			h = { name = "+git" },
+			g = { name = "+git" },
+			x = { name = "+trouble" },
+			s = { name = "+swap (tree-sitter)" },
 		}, { prefix = "<leader>" })
 	end,
 }

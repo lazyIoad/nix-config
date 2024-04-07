@@ -1,4 +1,4 @@
 return {
-	"tpope/vim-sleuth",
+	"tpope/vim-rsi",
 	event = "BufEnter",
 }

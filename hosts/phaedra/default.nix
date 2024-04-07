@@ -1,5 +1,13 @@
-{ config, pkgs, vars, ... }: rec {
+{ pkgs, ... }: rec {
   system.stateVersion = 4;
+
+  users.users.lazyload = {
+    description = "lazyload";
+    home = "/Users/lazyload";
+    shell = pkgs.fish;
+  };
+
+  programs.fish.enable = true;
 
   networking = {
     hostName = "phaedra";
@@ -9,7 +17,7 @@
   environment = {
     variables = {
       EDITOR = "nvim";
-      WORKSPACE = "/Users/${vars.user}/workspace";
+      WORKSPACE = "{users.users.lazyload.home}/workspace";
     };
   };
 

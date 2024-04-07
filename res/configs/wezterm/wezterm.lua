@@ -5,6 +5,10 @@ local rose_pine = {
 		colors = require("lua/rose-pine").colors(),
 		window_frame = require("lua/rose-pine").window_frame(),
 	},
+	moon = {
+		colors = require("lua/rose-pine-moon").colors(),
+		window_frame = require("lua/rose-pine-moon").window_frame(),
+	},
 	light = {
 		colors = require("lua/rose-pine-dawn").colors(),
 		window_frame = require("lua/rose-pine-dawn").window_frame(),
@@ -23,7 +27,7 @@ config.line_height = 1
 
 function color_data(appearance)
 	if appearance:find("Dark") then
-		return rose_pine.dark
+		return rose_pine.moon
 	else
 		return rose_pine.light
 	end

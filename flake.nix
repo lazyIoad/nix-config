@@ -1,5 +1,5 @@
 {
-  description = "lazyload's dotfiles";
+  description = "lazyload's nix configurations";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
@@ -25,10 +25,32 @@
   outputs = inputs@{ nixpkgs, flake-utils, ... }:
     flake-utils.lib.eachDefaultSystem
       (system:
-        let pkgs = nixpkgs.legacyPackages.${system};
-        in {
+        let
+          pkgs = import nixpkgs {
+            inherit system;
+          };
+
+          devShells = pkgs.mkShell {
+            buildInputs = with pkgs; [
+              nixpkgs-fmt
+              nodePackages.prettier
+            ];
+          };
+
           formatter = pkgs.nixpkgs-fmt;
-          devShells.default =
-            pkgs.mkShell { buildInputs = with pkgs; [ nixpkgs-fmt stylua ]; };
-        }) // import ./hosts inputs;
+        in
+        {
+          inherit formatter;
+          devShells.default = devShells;
+        }) // (
+      let
+        lib = import ./lib (inputs);
+        hostConfigs = import ./hosts { inherit inputs; };
+      in
+      {
+        inherit lib;
+        nixosConfigurations = hostConfigs.nixos;
+        darwinConfigurations = hostConfigs.darwin;
+      }
+    );
 }

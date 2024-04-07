@@ -1,4 +1,4 @@
-{ config, pkgs, vars, ... }: rec {
+{ config, pkgs, ... }: rec {
   imports = [
     ./hardware-configuration.nix
     ../modules/media.nix
@@ -7,6 +7,16 @@
     ../modules/sway.nix
     ../modules/power.nix
   ];
+
+  users.users.lazyload = {
+    description = "lazyload";
+    isNormalUser = true;
+    shell = pkgs.fish;
+    extraGroups = [ "networkmanager" "wheel" "video" ];
+    home = "/home/lazyload";
+  };
+
+  programs.fish.enable = true;
 
   boot.loader = {
     grub = {
@@ -76,7 +86,7 @@
 
     variables = {
       EDITOR = "nvim";
-      WORKSPACE = "/home/${vars.user}/workspace";
+      WORKSPACE = "${users.users.lazyload.home}/workspace";
       MOZ_DBUS_REMOTE =
         "1"; # https://github.com/swaywm/sway/wiki#i-cant-open-links-in-external-applications-in-firefox
     };
