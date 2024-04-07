@@ -50,8 +50,8 @@ in
       };
 
       programs = {
-        fzf.enableFishIntegration = true;
-        zoxide.enableFishIntegration = true;
+        fzf.enableZshIntegration = config.programs.fzf.enable;
+        zoxide.enableZshIntegration = config.programs.zoxide.enable;
       };
     };
 }
