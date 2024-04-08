@@ -35,6 +35,10 @@ in
       ];
   };
 
-  programs.neovim.enable = true;
-  programs.fish.enable = true;
+  programs = {
+    neovim.enable = true;
+    fish.enable = true;
+    git.enable = true;
+    wezterm-config.enable = true;
+  };
 }

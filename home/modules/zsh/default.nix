@@ -50,6 +50,7 @@ in
       fzf.enableZshIntegration = config.programs.fzf.enable;
       zoxide.enableZshIntegration = config.programs.zoxide.enable;
       direnv.enableZshIntegration = config.programs.direnv.enable;
+      wezterm.enableZshIntegration = config.programs.wezterm-config.enable;
 
       starship = {
         enable = true;

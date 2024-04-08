@@ -1,11 +1,20 @@
-{ config, specialArgs, ... }: {
-  programs.wezterm = {
-    enable = specialArgs.withGUI;
-    enableZshIntegration = true;
+{ lib, config, pkgs, specialArgs, ... }:
+let
+  cfg = config.programs.wezterm-config;
+in
+{
+  options.programs.wezterm-config = {
+    enable = lib.mkOption {
+      type = lib.types.bool;
+      default = config.programs.wezterm;
+      description = "Whether to enable Wezterm dotfiles";
+    };
   };
+} // {
+  config = lib.mkIf cfg.enable {
+    xdg.configFile."wezterm".source =
+      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/workspace/dotfiles/wezterm";
 
-  xdg.configFile."wezterm".source =
-    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/workspace/dots/res/configs/wezterm";
-
-  xdg.configFile."wezterm/wezterm.lua".enable = false;
+    xdg.configFile."wezterm/wezterm.lua".enable = false;
+  };
 }

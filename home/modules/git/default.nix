@@ -1,12 +1,15 @@
+{ lib, config, pkgs, ... }:
+with lib;
+let
+  cfg = config.programs.git;
+in
 {
-  programs = {
-    git = {
-      enable = true;
+  config = mkIf cfg.enable {
+    programs.git = {
       extraConfig = {
-        core = { editor = "hx"; };
+        core = { editor = "nvim"; };
         init = { defaultBranch = "master"; };
       };
-      ignores = [ ".DS_Store" ".direnv" ];
       userName = "lazyload";
       userEmail = "git@lazyloading.net";
     };
