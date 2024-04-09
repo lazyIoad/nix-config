@@ -6,6 +6,7 @@ in
   config = lib.mkIf cfg.enable {
     programs.zsh = {
       enable = true;
+      enableCompletion = true;
       enableAutosuggestions = true;
       syntaxHighlighting.enable = true;
       initExtraFirst = ''
