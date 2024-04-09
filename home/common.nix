@@ -1,4 +1,11 @@
-{ inputs, pkgs, vars, system, ... }: {
+{ inputs, pkgs, system, ... }: {
+  imports = [
+    ./modules/wezterm
+    ./modules/git
+    ./modules/fish
+    ./modules/neovim
+  ];
+
   home = {
     packages = with pkgs; [
       cachix

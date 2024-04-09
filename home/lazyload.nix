@@ -6,11 +6,7 @@ in
 {
   imports = [
     ./common.nix
-    ./modules/wezterm
-    ./modules/git
-    ./modules/fish
     ./modules/helix
-    ./modules/neovim
   ] ++ optionals specialArgs.withGUI [
     ./modules/vscode
     ./modules/sway
