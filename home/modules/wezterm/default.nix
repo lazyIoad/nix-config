@@ -6,7 +6,7 @@ in
   options.programs.wezterm-config = {
     enable = lib.mkOption {
       type = lib.types.bool;
-      default = config.programs.wezterm;
+      default = config.programs.wezterm.enable;
       description = "Whether to enable Wezterm dotfiles";
     };
   };
