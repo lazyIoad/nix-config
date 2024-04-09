@@ -48,10 +48,5 @@ in
           };
         };
       };
-
-      programs = {
-        fzf.enableZshIntegration = config.programs.fzf.enable;
-        zoxide.enableZshIntegration = config.programs.zoxide.enable;
-      };
     };
 }

@@ -20,6 +20,14 @@ in
     packages = with pkgs;
       [
         tailscale
+        cachix
+        fd
+        lazygit
+        neofetch
+        ripgrep
+        tree
+        tree-sitter
+        wget
       ] ++ optionals specialArgs.withGUI [
         pavucontrol
         signal-desktop
@@ -31,6 +39,22 @@ in
   };
 
   programs = {
+    home-manager.enable = true;
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
+
+    fzf = {
+      enable = true;
+      enableFishIntegration = false;
+    };
+
+    zoxide = {
+      enable = true;
+      enableFishIntegration = true;
+    };
+
     neovim.enable = true;
     fish.enable = true;
     git.enable = true;
