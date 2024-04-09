@@ -5,7 +5,6 @@ let
 in
 {
   imports = [
-    ./common.nix
     ./modules/helix
   ] ++ optionals specialArgs.withGUI [
     ./modules/vscode

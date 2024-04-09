@@ -27,6 +27,7 @@ rec {
           home-manager.useUserPackages = true;
           home-manager.users.${user} = homeManagerUser;
           home-manager.extraSpecialArgs = { inherit inputs system withGUI; };
+          home-manager.sharedModules = [ ../home/common.nix ];
         }
       ];
     };
@@ -56,6 +57,7 @@ rec {
             inherit inputs system;
             withGUI = false;
           };
+          home-manager.sharedModules = [ ../home/common.nix ];
         }
       ];
     };
