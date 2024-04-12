@@ -8,5 +8,7 @@ in
     {
       xdg.configFile."nvim".source =
         config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/workspace/dotfiles/nvim";
+      home.packages = [ pkgs.cmake ];
     };
+
 }
