@@ -1,8 +1,9 @@
 { ... }: {
   imports = [
-    ./wezterm
-    ./git
     ./fish
+    ./git
     ./neovim
+    ./wezterm
+    ./zsh
   ];
 }
