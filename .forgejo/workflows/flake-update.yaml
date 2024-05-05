@@ -2,7 +2,7 @@ name: update-flake-lock
 run-name: Update nix flake
 on:
   schedule:
-    - cron: "30 14 * * *"
+    - cron: "0 0 * * *"
 
 jobs:
   lockfile:
