@@ -2,7 +2,7 @@ name: update-flake-lock
 run-name: Update nix flake
 on:
   schedule:
-    - cron: "55 17 * * *"
+    - cron: "0 18 * * *"
 
 jobs:
   lockfile:
@@ -10,8 +10,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: https://code.forgejo.org/actions/checkout@v4
-        with:
-          ref: HEAD
 
       - name: Install Nix
         uses: https://git.lazylab.casa/lazyload/nix-installer-action@v10
