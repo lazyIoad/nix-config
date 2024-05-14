@@ -2,7 +2,7 @@ name: update-flake-lock
 run-name: Update nix flake
 on:
   schedule:
-    - cron: "0 18 * * *"
+    - cron: "13 18 * * *"
 
 jobs:
   lockfile:
@@ -21,7 +21,7 @@ jobs:
         uses: https://git.lazylab.casa/lazyload/git-auto-commit-action@v5
         with:
           commit_message: Bump flake.lock
-          branch: main
+          branch: master
           commit_options: '--no-verify --signoff'
           file_pattern: flake.lock
           commit_user_name: lazybot
