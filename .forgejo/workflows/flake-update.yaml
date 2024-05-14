@@ -2,7 +2,7 @@ name: update-flake-lock
 run-name: Update nix flake
 on:
   schedule:
-    - cron: "13 18 * * *"
+    - cron: "0 0 * * *"
 
 jobs:
   lockfile:
@@ -25,6 +25,7 @@ jobs:
           commit_options: '--no-verify --signoff'
           file_pattern: flake.lock
           commit_user_name: lazybot
+          commit_user_name: lazybot@lazyloading.net
           commit_author: lazybot <lazybot@lazyloading.net>
           skip_dirty_check: false
           skip_fetch: true
