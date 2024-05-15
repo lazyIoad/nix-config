@@ -25,7 +25,7 @@ jobs:
           commit_options: '--no-verify --signoff'
           file_pattern: flake.lock
           commit_user_name: lazybot
-          commit_user_name: lazybot@lazyloading.net
+          commit_user_email: lazybot@lazyloading.net
           commit_author: lazybot <lazybot@lazyloading.net>
           skip_dirty_check: false
           skip_fetch: true
